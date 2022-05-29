@@ -2,35 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title  th:text="${titulo}"></title>
+<title th:text="${titulo}"></title>
 </head>
 <body>
 
-<h1>ESTO ES UN TÍTULO</h1>
+	<h1>ESTO ES UN TÍTULO</h1>
 	<form th:action="@{/web/form}" method="post">
 		<div>
-			<label for="username">Username: </label> 
-			<input name="username"
-				id="username" type="text" />
+			<label for="username">Username: </label> <input name="username"
+				id="username" type="text" th:value="${usuario.username}"/> <span
+				th:if="${errores != null && errores.containsKey('username')}"
+				th:text="${errores.get('username')}"></span>
 		</div>
 		<div>
-			<label for="password">Password: </label> 
-			<input name="password"
-				id="password" type="password" />
+			<label for="password">Password: </label> <input name="password"
+				id="password" type="password" /> <span
+				th:if="${errores != null && errores.containsKey('password')}"
+				th:text="${errores.get('password')}"></span>
 		</div>
 		<div>
-			<label for="password_2">Repeat password: </label> 
-			<input name="password_2"
-				id="password_2" type="password" />
+			<label for="password_2">Repeat password: </label> <input
+				name="password_2" id="password_2" type="password" />
 		</div>
 		<div>
-			<label for="email">Email: </label> 
-			<input name="email"
-				id="email" type="email" />
+			<label for="email">Email: </label> <input name="email" id="email"
+				type="email" th:value="${usuario.email}" /> <span
+				th:if="${errores != null && errores.containsKey('email')}"
+				th:text="${errores.get('email')}"></span>
 		</div>
 		<div>
-			<input name="boton_enviar" id="boton_enviar" 
-				type="submit" value="Enviar" />
+			<input name="boton_enviar" id="boton_enviar" type="submit"
+				value="Enviar" />
 		</div>
 	</form>
 </body>
