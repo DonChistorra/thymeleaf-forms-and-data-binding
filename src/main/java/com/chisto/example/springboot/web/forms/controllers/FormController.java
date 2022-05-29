@@ -25,16 +25,7 @@ public class FormController {
 	}
 	
 	@PostMapping("/form")
-	public String procesarForm(Model model, 
-			@RequestParam String username,
-			@RequestParam String password,
-			@RequestParam String password_2,
-			@RequestParam String email) {
-		
-		Usuario usuario = new Usuario();
-		usuario.setUsername(username);
-		usuario.setPassword(password.equals(password_2) ? password : "Las contraseñas no coinciden");
-		usuario.setEmail(email);
+	public String procesarForm(Usuario usuario, Model model) {
 		
 		model.addAttribute("titulo", titulo);
 		model.addAttribute("usuario", usuario);
