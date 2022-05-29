@@ -7,28 +7,28 @@
 <body>
 
 	<h1>ESTO ES UN TÍTULO</h1>
-	<form th:action="@{/web/form}" method="post">
+	<form th:action="@{/web/form}" th:object="${usuario}" method="post">
 		<div>
-			<label for="username">Username: </label> <input name="username"
-				id="username" type="text" th:value="${usuario.username}"/> <span
-				th:if="${errores != null && errores.containsKey('username')}"
-				th:text="${errores.get('username')}"></span>
+			<label for="username">Username: </label> <input 
+				id="username" type="text" th:field="*{username}"/> <span
+				th:if="${#fields.hasErrors('username')}"
+				th:errors="*{username}"></span>
 		</div>
 		<div>
-			<label for="password">Password: </label> <input name="password"
-				id="password" type="password" /> <span
-				th:if="${errores != null && errores.containsKey('password')}"
-				th:text="${errores.get('password')}"></span>
+			<label for="password">Password: </label> <input 
+				id="password" type="password" th:field="*{password}" /> <span
+				th:if="${#fields.hasErrors('password')}"
+				th:errors="*{password}"></span>
 		</div>
 		<div>
 			<label for="password_2">Repeat password: </label> <input
 				name="password_2" id="password_2" type="password" />
 		</div>
 		<div>
-			<label for="email">Email: </label> <input name="email" id="email"
-				type="email" th:value="${usuario.email}" /> <span
-				th:if="${errores != null && errores.containsKey('email')}"
-				th:text="${errores.get('email')}"></span>
+			<label for="email">Email: </label> <input name="email" 
+				type="email" th:field="*{email}" /> <span
+				th:if="${#fields.hasErrors('email')}"
+				th:errors="*{email}"></span>
 		</div>
 		<div>
 			<input name="boton_enviar" id="boton_enviar" type="submit"

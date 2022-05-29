@@ -34,11 +34,6 @@ public class FormController {
 
 		model.addAttribute("titulo", titulo);
 		if (result.hasErrors()) {
-			Map<String, String> errores = new HashMap<>();
-			result.getFieldErrors().forEach(currentError -> {
-				errores.put(currentError.getField(), "Error encontrado: ".concat(currentError.getDefaultMessage()));
-			});
-			model.addAttribute("errores", errores);
 			return "form";
 		}
 		model.addAttribute("usuario", usuario);
