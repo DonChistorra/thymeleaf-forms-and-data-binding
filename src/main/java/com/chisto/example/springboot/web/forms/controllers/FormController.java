@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.chisto.example.springboot.web.forms.model.Usuario;
+
 
 @Controller
 @RequestMapping("/web")
@@ -29,10 +31,13 @@ public class FormController {
 			@RequestParam String password_2,
 			@RequestParam String email) {
 		
-		model.addAttribute("username", username);
-		model.addAttribute("password", password.equals(password_2) ? password : "Las contraseñas no coinciden");
-		model.addAttribute("email", email);
+		Usuario usuario = new Usuario();
+		usuario.setUsername(username);
+		usuario.setPassword(password.equals(password_2) ? password : "Las contraseñas no coinciden");
+		usuario.setEmail(email);
+		
 		model.addAttribute("titulo", titulo);
+		model.addAttribute("usuario", usuario);
 		
 		return "processedForm";
 	}
