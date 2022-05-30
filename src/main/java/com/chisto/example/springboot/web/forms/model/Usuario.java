@@ -11,6 +11,9 @@ public class Usuario {
 	@NotEmpty
 	private String email;
 
+	@NotEmpty
+	private String identificador;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -33,6 +36,14 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 
 }

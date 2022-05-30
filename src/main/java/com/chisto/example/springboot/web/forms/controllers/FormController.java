@@ -1,8 +1,5 @@
 package com.chisto.example.springboot.web.forms.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -12,10 +9,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.chisto.example.springboot.web.forms.model.Usuario;
 
 @Controller
+@SessionAttributes("usuario")
 @RequestMapping("/web")
 public class FormController {
 
@@ -25,7 +24,9 @@ public class FormController {
 	@GetMapping("/form")
 	public String form(Model model) {
 		model.addAttribute("titulo", titulo);
-		model.addAttribute("usuario", new Usuario());
+		Usuario usuario = new Usuario();
+		usuario.setIdentificador("123456");
+		model.addAttribute("usuario", usuario);
 		return "form";
 	}
 
