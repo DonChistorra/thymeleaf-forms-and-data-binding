@@ -9,6 +9,12 @@
 	<h1>ESTO ES UN TÍTULO</h1>
 	<form th:action="@{/web/form}" th:object="${usuario}" method="post">
 		<div>
+			<label for="identificador">Identificador: </label> <input 
+				id="identificador" type="text" th:field="*{identificador}"/> <span
+				th:if="${#fields.hasErrors('identificador')}"
+				th:errors="*{identificador}"></span>
+		</div>
+		<div>
 			<label for="username">Username: </label> <input 
 				id="username" type="text" th:field="*{username}"/> <span
 				th:if="${#fields.hasErrors('username')}"

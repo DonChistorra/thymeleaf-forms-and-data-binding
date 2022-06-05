@@ -2,6 +2,7 @@ package com.chisto.example.springboot.web.forms.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.chisto.example.springboot.web.forms.model.Usuario;
+import com.chisto.example.springboot.web.forms.validations.UsuarioValidator;
 
 @Controller
 @SessionAttributes("usuario")
 @RequestMapping("/web")
 public class FormController {
 
+	@Autowired
+	private UsuarioValidator validator;
+	
 	@Value("${controllers.form.titulo}")
 	private String titulo;
 
@@ -32,7 +37,7 @@ public class FormController {
 
 	@PostMapping("/form")
 	public String procesarForm(@Valid Usuario usuario, BindingResult result, Model model) {
-
+		validator.validate(usuario, result);
 		model.addAttribute("titulo", titulo);
 		if (result.hasErrors()) {
 			return "form";
