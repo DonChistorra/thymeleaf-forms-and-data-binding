@@ -37,6 +37,12 @@
 				th:errors="*{email}"></span>
 		</div>
 		<div>
+			<label for="edad">Edad: </label> <input name="edad" 
+				type="text" th:field="*{edad}" /> <span
+				th:if="${#fields.hasErrors('edad')}"
+				th:errors="*{edad}"></span>
+		</div>
+		<div>
 			<input name="boton_enviar" id="boton_enviar" type="submit"
 				value="Enviar" />
 		</div>
