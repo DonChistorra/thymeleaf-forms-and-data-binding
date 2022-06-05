@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.chisto.example.springboot.web.forms.validations.IdentificadorRegex;
+
 public class Usuario {
 
 	@NotEmpty(message = "Campo username no puede ser nulo")
@@ -16,7 +18,7 @@ public class Usuario {
 	@Email
 	private String email;
 
-	@NotEmpty
+	@IdentificadorRegex
 	private String identificador;
 	
 	public String getUsername() {
